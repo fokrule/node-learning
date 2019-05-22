@@ -1,5 +1,11 @@
-var stuff = require('./stuff');
+var http = require('http'); // load http module
 
-console.log(stuff.counter(['fokrul','hasan','forhad']));
-console.log(stuff.adder(3,4));
-console.log(stuff.adder(stuff.pi,3));
+
+var server = http.createServer(function(request, response) {
+	console.log('request : ' + request.url);
+	response.writeHead(200, {'Content-Type' : 'text/plain'});
+	response.end('Hey Forhad');
+}); // create server
+
+server.listen(3000, '127.0.0.1');
+console.log('Listening');
