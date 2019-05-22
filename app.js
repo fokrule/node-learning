@@ -7,8 +7,8 @@ var fs = require('fs');
 
 var server = http.createServer(function(request, response) {
 	console.log('request : ' + request.url);
-	response.writeHead(200, {'Content-Type' : 'text/plain'});
-	var myReadStream = fs.createReadStream(__dirname + '/about.txt', 'utf8'); // create read able stram and read about.tzt file
+	response.writeHead(200, {'Content-Type' : 'text/html'});
+	var myReadStream = fs.createReadStream(__dirname + '/index.html', 'utf8'); // create read able stram and read about.tzt file
 	myReadStream.pipe(response);
 }); // create server
 
