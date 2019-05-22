@@ -5,10 +5,10 @@ var http = require('http'); // load http module
 var fs = require('fs');
 
 var myReadStream = fs.createReadStream(__dirname + '/about.txt', 'utf8'); // create read able stram and read about.tzt file
-
+var myWriteStream = fs.createWriteStream(__dirname + '/about-write.txt');
 myReadStream.on('data', function(chunk){
 	console.log('Chunk received');
-	console.log(chunk);
+	myWriteStream.write(chunk); // the data got by chunk will store in about-write.txt
 });
 
 
