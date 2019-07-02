@@ -1,38 +1,18 @@
-var http = require('http');
+var express = require('express');
 
-var fs = require('fs');
+var app = express();
 
-var server = http.createServer(function(request, response){
-	console.log('Request was made : ' + request.url );
-	if (request.url === '/home' || request.url === '/'){
-		console.log('dd');
-		response.writeHead(200, {'Content-Type' : 'text/html'});
-		fs.createReadStream(__dirname + '/index.html').pipe(response);
-	}
-	else if (request.url === '/contact'){
-		console.log(response.url);
-		response.writeHead(200, {'Content-Type' : 'text/html'});
-		fs.createReadStream(__dirname + '/contact.html').pipe(response);
-	}
-	else if (request.url === '/api/user') {
-		var user = [
-			{
-				name : 'Forhad',
-				age : 26
-			},
-			{
-				name : 'Fokrul',
-				age : 25
-			}
-		];
-		response.writeHead(200, {'Content-Type' : 'application/json'});
-		response.end(JSON.stringify(user));		
-	}
-	else {
-		response.writeHead(400, {'Content-Type': 'text/html'});
-		fs.createReadStream(__dirname + '/404.html').pipe(response);
-	}
-});
 
-server.listen(2000, '127.0.0.1');
-console.log('Listening to the server');
+ app.get('/', function( req, res ){
+	 res.send('express is found');
+ });
+
+ app.get('/profile/:name', function(req, res){
+	res.send('You are viewing profile for ' + req.params.name);
+ });
+
+ app.get('/contact/', function(req, res){
+	res.sendFile(__dirname + '/contact.html');
+ });
+ 
+ app.listen(2000);
