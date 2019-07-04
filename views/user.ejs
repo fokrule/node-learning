@@ -1,0 +1,35 @@
+<html>
+
+<head>
+	Header for learning Node js serving html page
+</head>
+
+<body>
+	<% include partials/nav.ejs %>
+	<p>
+		<b>
+			This is the profile page for <%=  user.name %>
+		</b>
+		<br>
+		<b>
+			This is the profile page for <%=  user.age %>
+		</b>
+		<br>
+		<b>
+			This is the profile page for <%=  user.Occupation %>
+		</b>
+		<br>
+		<ul>
+			<% user.hobbies.forEach(function(item){ %>
+			<li>
+				<%= item %>
+			</li>
+			<% 
+					});
+					%>
+		</ul>
+
+	</p>
+</body>
+
+</html>
