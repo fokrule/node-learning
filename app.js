@@ -27,7 +27,8 @@ app.use('/assets', express.static('views/assets'));
  });
 
  app.get('/contact/', function(req, res){
-	res.sendFile(__dirname + '/contact.html');
+	 console.log(req.query);
+	res.render('contact',{qs:req.query});
  });
  
  app.listen(2000);
