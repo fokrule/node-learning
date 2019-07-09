@@ -10,14 +10,14 @@
 	<body>
 
 		<div>
-			<form action="">
-				<input type="text" value="<%= qs.dep %>">
+			<form action="/contact/" method="POST">
+				<input type="text" name="to_depertman" value="<%= qs.dep %>">
 				<br>
-				<input type="text"  value="<%= qs.name %>">
+				<input type="text" name="to_name" value="<%= qs.name %>">
 				<br>
-				<input type="text">
+				<input type="text" name="sender_email">
 				<br>
-				<input type="text">
+				<button>send</button>
 			</form>
 		</div>
 	</body>

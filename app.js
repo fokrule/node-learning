@@ -1,7 +1,8 @@
 var express = require('express');
-
+var bodyParser = require('body-parser');
 var app = express();
 
+var urlencodedParser =  bodyParser.urlencoded({extended:false});
 app.set('view engine','ejs');
 app.use('/assets', express.static('views/assets'));
 // here /assets is route and views/assets is folder directory
@@ -30,5 +31,10 @@ app.use('/assets', express.static('views/assets'));
 	 console.log(req.query);
 	res.render('contact',{qs:req.query});
  });
+
+ 
+ app.post('/contact',urlencodedParser, function(req, res){
+	console.log(req.body);
+});
  
  app.listen(2000);
